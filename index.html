@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neptune Bank</title>
+
+    <!-- Google Analytics Tracking Code -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GMNWYP6GMX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-GMNWYP6GMX');
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(to right, #0d47a1, #80deea);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 15px;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 15px 0;
+            font-size: 1.5rem;
+            background-color: rgba(255, 255, 255, 0.15);
+            color: white;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 100px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #0d47a1;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        #countdown {
+            display: flex;
+            justify-content: space-around;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .time {
+            background: #00796b;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            width: 100px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .time span {
+            display: block;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .time small {
+            font-size: 1rem;
+            color: #e0f2f1;
+        }
+
+        #date {
+            font-size: 1rem;
+            margin-top: 25px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .footer {
+            background-color: #0d47a1;
+            color: white;
+            padding: 15px 0;
+            width: 100%;
+            font-size: 0.9rem;
+            position: fixed;
+            bottom: 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+                margin-top: 80px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .time {
+                width: 80px;
+                padding: 15px;
+            }
+
+            .time span {
+                font-size: 1.8rem;
+            }
+
+            .time small {
+                font-size: 0.9rem;
+            }
+
+            .footer {
+                font-size: 0.8rem;
+                padding: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">Neptune Bank</div>
+
+    <div class="container">
+        <h1>We're Launching Soon!</h1>
+        <p>Our website is under development. Stay tuned for updates.</p>
+
+        <div id="countdown">
+            <div class="time">
+                <span id="days">00</span>
+                <small>Days</small>
+            </div>
+            <div class="time">
+                <span id="hours">00</span>
+                <small>Hours</small>
+            </div>
+            <div class="time">
+                <span id="minutes">00</span>
+                <small>Minutes</small>
+            </div>
+            <div class="time">
+                <span id="seconds">00</span>
+                <small>Seconds</small>
+            </div>
+        </div>
+
+        <p id="date">Mark your calendar: September 21, 2025</p>
+    </div>
+
+    <div class="footer">&copy; 2025 Neptune Bank. All rights reserved.</div>
+
+    <script>
+        function updateCountdown() {
+            const targetDate = new Date('September 21, 2025 00:00:00').getTime();
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = days;
+            document.getElementById('hours').innerText = hours;
+            document.getElementById('minutes').innerText = minutes;
+            document.getElementById('seconds').innerText = seconds;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+
+</body>
+</html>
